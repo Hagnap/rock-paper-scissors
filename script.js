@@ -43,11 +43,70 @@ function getPlayerChoice() {
     
 }
 
+function playRound(computerChoice, playerChoice) {
+
+    let playerWon;
+
+    // Draw
+    if(computerChoice === playerChoice) {
+
+    }
+
+    // Player chose rock
+    if(playerChoice === "rock") {
+        if(computerChoice === "paper") {
+            playerWon = false;
+        }
+
+        // computerChoice === "scissors"
+        else {
+            playerWon = true;
+        }
+    }
+
+    // Player chose paper
+    else if(playerChoice === "paper") {
+        if(computerChoice === "rock") {
+            playerWon = true;
+        }
+
+        // computerChoice === "scissors"
+        else {
+            playerWon = false;
+        }
+    }
+
+    // Player chose scissors
+    else {
+        if(computerChoice === "rock") {
+            playerWon = false;
+        }
+        // computerChoice === "paper"
+        else {
+            playerWon = true;
+        }
+    }
+
+    if(playerWon) {
+        console.log("Player won! " + playerChoice + " beats " + computerChoice + ".");
+    }
+    else {
+        console.log("Computer won! " + computerChoice + " beats " + playerChoice + ".");
+    }
+    
+}
+
 // Main function
 function main() {
     
-    console.log("Computer's choice: " + getComputerChoice());
-    console.log("Player's choice: " + getPlayerChoice());
+
+    let computerChoice = getComputerChoice();
+    console.log("Computer's choice: " + computerChoice);
+
+    let playerChoice = getPlayerChoice();
+    console.log("Player's choice: " + playerChoice);
+
+    playRound(computerChoice, playerChoice);
 }
 
 
