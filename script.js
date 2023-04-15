@@ -86,6 +86,9 @@ function playGame() {
     let numRounds = 5;
 
     for(let i = 0; i < numRounds; i++){
+
+        console.log("Round #" + (i+1));
+
         let computerChoice = getComputerChoice();
         console.log("Computer's choice: " + computerChoice);
     
@@ -106,15 +109,15 @@ function playGame() {
     }
 
     if(playerScore > computerScore) {
-        console.log("Player wins the series! with a score of " + playerScore);
+        console.log("Player wins the series with a score of " + playerScore + " - " + computerScore);
     }
 
     else if(playerScore < computerScore) {
-        console.log("Computer wins the series! with a score of " + computerScore);
+        console.log("Computer wins the series! with a score of " + computerScore + " - " + playerScore);
     }
 
     else {
-        console.log("Draw. Both the player and the computer had a score of " + playerScore);
+        console.log("Draw. Both the player and the computer finsihed with a score of " + playerScore + " - " + computerScore);
     }
 }
 
