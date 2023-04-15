@@ -43,70 +43,86 @@ function getPlayerChoice() {
     
 }
 
-function playRound(computerChoice, playerChoice) {
+function playRound(computerSelection, playerSelection) {
 
-    let playerWon;
+    // Check for draw
+    if (playerSelection === computerSelection) {
+        return "Draw!";
 
-    // Draw
-    if(computerChoice === playerChoice) {
-
-    }
-
-    // Player chose rock
-    if(playerChoice === "rock") {
-        if(computerChoice === "paper") {
-            playerWon = false;
+    } else if (playerSelection === "rock") {
+        if (computerSelection === "scissors") {
+            return "Player wins! Rock beats Scissors.";
         }
-
-        // computerChoice === "scissors"
         else {
-            playerWon = true;
-        }
-    }
-
-    // Player chose paper
-    else if(playerChoice === "paper") {
-        if(computerChoice === "rock") {
-            playerWon = true;
+            return "Computer wins! Paper beats Rock.";
         }
 
-        // computerChoice === "scissors"
+    } else if (playerSelection === "paper") {
+        if (computerSelection === "rock") {
+            return "Player wins! Paper beats Rock.";
+
+        }
         else {
-            playerWon = false;
-        }
-    }
+            return "Computer wins! Scissors beats Paper.";
 
-    // Player chose scissors
-    else {
-        if(computerChoice === "rock") {
-            playerWon = false;
         }
-        // computerChoice === "paper"
-        else {
-            playerWon = true;
-        }
-    }
-
-    if(playerWon) {
-        console.log("Player won! " + playerChoice + " beats " + computerChoice + ".");
     }
     else {
-        console.log("Computer won! " + computerChoice + " beats " + playerChoice + ".");
+        if (computerSelection === "paper") {
+            return "Player wins! Scissors beats Paper.";
+
+        }
+        else {
+            return "Computer wins! Rock beats Scissors.";
+        }
     }
+}
+
+function playGame() {
+
+    let result = "";
+    let playerScore = 0;
+    let computerScore = 0; // This value is just the complement of playerScore, so a var is not needed (computerScore = numRounds - playerScore), we could just compute the value
+    let numRounds = 5;
+
+    for(let i = 0; i < numRounds; i++){
+        let computerChoice = getComputerChoice();
+        console.log("Computer's choice: " + computerChoice);
     
+        let playerChoice = getPlayerChoice();
+        console.log("Player's choice: " + playerChoice);
+    
+        result = playRound(computerChoice, playerChoice);
+
+        if(result.charAt(0) === 'P') {
+            playerScore++;
+        }
+        else if(result.charAt(0) === 'C'){
+            computerScore++;
+        }
+        else {
+            console.log("Draw!");
+        }
+    }
+
+    if(playerScore > computerScore) {
+        console.log("Player wins the series! with a score of " + playerScore);
+    }
+
+    else if(playerScore < computerScore) {
+        console.log("Computer wins the series! with a score of " + computerScore);
+    }
+
+    else {
+        console.log("Draw. Both the player and the computer had a score of " + playerScore);
+    }
 }
 
 // Main function
 function main() {
     
+    playGame();
 
-    let computerChoice = getComputerChoice();
-    console.log("Computer's choice: " + computerChoice);
-
-    let playerChoice = getPlayerChoice();
-    console.log("Player's choice: " + playerChoice);
-
-    playRound(computerChoice, playerChoice);
 }
 
 
