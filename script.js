@@ -64,7 +64,6 @@ function playRound(computerSelection, playerSelection) {
         }
         else {
             return "Computer wins! Scissors beats Paper.";
-
         }
     }
     else {
@@ -89,23 +88,36 @@ function playGame() {
 
         console.log("Round #" + (i+1));
 
+        let playerChoice = getPlayerChoice();
+        console.log("Player's choice: " + playerChoice);
+
         let computerChoice = getComputerChoice();
         console.log("Computer's choice: " + computerChoice);
     
-        let playerChoice = getPlayerChoice();
-        console.log("Player's choice: " + playerChoice);
-    
         result = playRound(computerChoice, playerChoice);
 
-        if(result.charAt(0) === 'P') {
+        console.log(result);
+
+        switch(result.charAt(0)) {
+            case 'P':
+                playerScore++;
+                break;
+            case 'C':
+                computerScore++;
+                break;
+        }
+
+        /* if(result.charAt(0) === 'P') {
             playerScore++;
         }
         else if(result.charAt(0) === 'C'){
             computerScore++;
         }
         else {
-            console.log("Draw!");
-        }
+            continue;
+        } */
+
+        console.log("-------------------------------------");
     }
 
     if(playerScore > computerScore) {
@@ -119,6 +131,8 @@ function playGame() {
     else {
         console.log("Draw. Both the player and the computer finsihed with a score of " + playerScore + " - " + computerScore);
     }
+
+    
 }
 
 // Main function
