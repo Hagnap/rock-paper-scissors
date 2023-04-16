@@ -132,6 +132,7 @@ function playGame() {
         console.log("Draw. Both the player and the computer finsihed with a score of " + playerScore + " - " + computerScore);
     }
 
+    console.log("Refresh the page to play again.");
     
 }
 
