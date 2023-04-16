@@ -107,16 +107,6 @@ function playGame() {
                 break;
         }
 
-        /* if(result.charAt(0) === 'P') {
-            playerScore++;
-        }
-        else if(result.charAt(0) === 'C'){
-            computerScore++;
-        }
-        else {
-            continue;
-        } */
-
         console.log("-------------------------------------");
     }
 
