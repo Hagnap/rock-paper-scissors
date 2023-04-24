@@ -51,6 +51,11 @@ function getPlayerChoice() {
 }
 
 function gameOver(computerScore, playerScore, gameOverMessagePara) {
+
+    // Change outline from beige to black 
+    let gameOverDiv = document.querySelector('.game-over');
+    gameOverDiv.style.cssText = "outline: 2px solid black;";
+
     if(playerScore > computerScore) {
         gameOverMessagePara.textContent = `Player Wins with a Score of ${playerScore}!`;
     }
@@ -69,8 +74,14 @@ function resetGame() {
     roundNumber = 0;
 
     
+    let gameOverDiv = document.querySelector('.game-over');
+    gameOverDiv.style.cssText = "outline: 2px solid beige;";
+
     let gameResultsDiv = document.querySelector('.game-results');
     gameResultsDiv.innerHTML = '';
+
+    let gameRoundResultsDiv = document.querySelector('.game-results #round-results');
+    gameRoundResultsDiv.textContent = "Round Results";
 
     // Gets paragraphs in game-data div & game-over div
     let roundNumberPara = document.querySelector('#round-number');
@@ -162,9 +173,7 @@ function playRound() {
 }
 
 function main() {
-    playerScore = 0;
-    computerScore = 0;
-    roundNumber = 0;
+    //resetGame();
 }
 
 main();
