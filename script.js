@@ -25,6 +25,8 @@ function getComputerChoice() {
 function getPlayerChoice() {
     let choice = prompt("Enter: Rock, Paper, or Scissors");
 
+    if(choice == null) { return getComputerChoice(); }
+
     choice = choice.toLowerCase();
 
     if(choice === "rock") {
