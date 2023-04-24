@@ -80,9 +80,6 @@ function resetGame() {
     let gameResultsDiv = document.querySelector('.game-results');
     gameResultsDiv.innerHTML = '';
 
-    let gameRoundResultsDiv = document.querySelector('.game-results #round-results');
-    gameRoundResultsDiv.textContent = "Round Results";
-
     // Gets paragraphs in game-data div & game-over div
     let roundNumberPara = document.querySelector('#round-number');
     roundNumberPara.textContent = '';
@@ -117,14 +114,15 @@ function playRound() {
     // Create an element to add game results data to
     let gameResultsData = document.createElement('p');
 
+    gameResultsData.textContent = `Round #${roundNumber+1}: `;
     // Updates game result data content depending on the result
     if (playerSelection === computerSelection) {
-        gameResultsData.textContent = "Draw!";
+        gameResultsData.textContent += "Draw!";
 
     } else if (playerSelection === "rock") {
         if (computerSelection === "scissors") {
             playerScore++;
-            gameResultsData.textContent = "Player wins! Rock beats Scissors.";
+            gameResultsData.textContent += "Player wins! Rock beats Scissors.";
         }
         else {
             computerScore++;
@@ -134,23 +132,23 @@ function playRound() {
     } else if (playerSelection === "paper") {
         if (computerSelection === "rock") {
             playerScore++;
-            gameResultsData.textContent = "Player wins! Paper beats Rock.";
+            gameResultsData.textContent += "Player wins! Paper beats Rock.";
 
         }
         else {
             computerScore++;
-            gameResultsData.textContent = "Computer wins! Scissors beats Paper.";
+            gameResultsData.textContent += "Computer wins! Scissors beats Paper.";
         }
     }
     else {
         if (computerSelection === "paper") {
             playerScore++;
-            gameResultsData.textContent = "Player wins! Scissors beats Paper.";
+            gameResultsData.textContent += "Player wins! Scissors beats Paper.";
 
         }
         else {
             computerScore++;
-            gameResultsData.textContent = "Computer wins! Rock beats Scissors.";
+            gameResultsData.textContent += "Computer wins! Rock beats Scissors.";
         }
     }
 
