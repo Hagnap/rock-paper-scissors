@@ -144,7 +144,7 @@ function playRound() {
     }
 
     // Update Data on the DOM
-    roundNumberPara.textContent = `Round #: ${roundNumber + 1} / 5`;
+    roundNumberPara.textContent = `Round #${roundNumber + 1} / 5`;
     playerScorePara.textContent = "Player Score: " + playerScore;
     computerScorePara.textContent = "Computer Score: " + computerScore;
 
