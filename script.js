@@ -129,7 +129,10 @@ function playGame() {
 // Main function
 function main() {
     
-    playGame();
+    //playGame();
+    playerChoice = getPlayerChoice();
+    let computerChoice = getComputerChoice();
+    console.log(playRound(computerChoice, playerChoice));
 
 }
 
