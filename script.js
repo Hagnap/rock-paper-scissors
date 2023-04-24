@@ -48,36 +48,48 @@ function playRound() {
     let playerSelection = getPlayerChoice();
     let computerSelection = getComputerChoice();
 
-    // Check for draw
+    // Get game-results div so that content can be added to it
+    gameResultsDiv = document.querySelector('.game-results');
+    
+    // Create an element to add game results data to 
+    gameResultsData = document.createElement('p');
+
+
+    // Updates game result data content depending on the result
     if (playerSelection === computerSelection) {
-        console.log("Draw!");
+        gameResultsData.textContent = "Draw!";
 
     } else if (playerSelection === "rock") {
         if (computerSelection === "scissors") {
-            console.log("Player wins! Rock beats Scissors.");
+            gameResultsData.tetextContentxt = "Player wins! Rock beats Scissors.";
         }
         else {
-            console.log("Computer wins! Paper beats Rock.");
+            gameResultsData.textContent = "Computer wins! Paper beats Rock.";
         }
 
     } else if (playerSelection === "paper") {
         if (computerSelection === "rock") {
-            console.log("Player wins! Paper beats Rock.");
+            gameResultsData.textContent = "Player wins! Paper beats Rock.";
 
         }
         else {
-            console.log("Computer wins! Scissors beats Paper.");
+            gameResultsData.textContent = "Computer wins! Scissors beats Paper.";
         }
     }
     else {
         if (computerSelection === "paper") {
-            console.log("Player wins! Scissors beats Paper.");
+            gameResultsData.textContent = "Player wins! Scissors beats Paper.";
 
         }
         else {
-            console.log("Computer wins! Rock beats Scissors.");
+            gameResultsData.textContent = "Computer wins! Rock beats Scissors.";
         }
     }
+
+    console.log(gameResultsDiv);
+
+    // Add gameResultsData to the DOM
+    gameResultsDiv.appendChild(gameResultsData);
 }
 
 function playGame() {
