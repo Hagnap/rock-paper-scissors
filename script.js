@@ -1,3 +1,8 @@
+// Global vars
+let playerScore = 0;
+let computerScore = 0;
+let roundNumber = 1;
+
 // Functions for gameplay
 function getComputerChoice() {
     let choice;
@@ -48,12 +53,19 @@ function playRound() {
     let playerSelection = getPlayerChoice();
     let computerSelection = getComputerChoice();
 
-    // Get game-results div so that content can be added to it
-    gameResultsDiv = document.querySelector('.game-results');
-    
-    // Create an element to add game results data to 
-    gameResultsData = document.createElement('p');
+    // Get game-results div & game-over div
+    let gameResultsDiv = document.querySelector('.game-results');
+    let gameOverDiv = document.querySelector('.game-over');
 
+    // Gets paragraphs in game-data div & game-over div
+    let roundNumberPara = document.querySelector('#round-number');
+    let playerScorePara = document.querySelector('#player-score');
+    let computerScorePara = document.querySelector('#computer-score');
+
+    let gameOverMessagePara = document.querySelector('#game-over-message');
+
+    // Create an element to add game results data to
+    let gameResultsData = document.createElement('p');
 
     // Updates game result data content depending on the result
     if (playerSelection === computerSelection) {
@@ -61,33 +73,63 @@ function playRound() {
 
     } else if (playerSelection === "rock") {
         if (computerSelection === "scissors") {
-            gameResultsData.tetextContentxt = "Player wins! Rock beats Scissors.";
+            playerScore++;
+            gameResultsData.textContent = "Player wins! Rock beats Scissors.";
         }
         else {
-            gameResultsData.textContent = "Computer wins! Paper beats Rock.";
+            computerScore++;
+            return "Computer wins! Paper beats Rock.";
         }
 
     } else if (playerSelection === "paper") {
         if (computerSelection === "rock") {
+            playerScore++;
             gameResultsData.textContent = "Player wins! Paper beats Rock.";
 
         }
         else {
+            computerScore++;
             gameResultsData.textContent = "Computer wins! Scissors beats Paper.";
         }
     }
     else {
         if (computerSelection === "paper") {
+            playerScore++;
             gameResultsData.textContent = "Player wins! Scissors beats Paper.";
 
         }
         else {
+            computerScore++;
             gameResultsData.textContent = "Computer wins! Rock beats Scissors.";
         }
     }
 
+
+
+    // Update Data on the DOM
+    roundNumberPara.textContent = "Round #: " + (roundNumber) + " / 5";
+    playerScorePara.textContent = "Player Score: " + playerScore;
+    computerScorePara.textContent = "Computer Score: " + computerScore;
+
+
     // Add gameResultsData to the DOM
     gameResultsDiv.appendChild(gameResultsData);
+
+    // Update round data
+    roundNumber++;
+
+    // Check for winner if round 5
+    if(roundNumber == 5) {
+        if(playerScore > computerScore) {
+            gameOverMessagePara.textContent = `Player Wins with a Score of ${playerScore}!`;
+        }
+        else if(playerScore < computerScore) {
+            gameOverMessagePara.textContent = `Computer Wins with a Score of ${computerScore}!`;
+        }
+        else {
+            gameOverMessagePara.textContent = "It's a Draw!";
+        }
+    }
 }
 
 function playGame() {
@@ -143,7 +185,10 @@ function playGame() {
 function main() {
     
     //playGame();
-}
 
+    playerScore = 0;
+    computerScore = 0;
+    roundNumber = 1;
+}
 
 main();
