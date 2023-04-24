@@ -86,8 +86,6 @@ function playRound() {
         }
     }
 
-    console.log(gameResultsDiv);
-
     // Add gameResultsData to the DOM
     gameResultsDiv.appendChild(gameResultsData);
 }
