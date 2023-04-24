@@ -1,7 +1,7 @@
 // Global vars
 let playerScore = 0;
 let computerScore = 0;
-let roundNumber = 1;
+let roundNumber = 0;
 
 // Functions for gameplay
 function getComputerChoice() {
@@ -109,7 +109,7 @@ function playRound() {
 
 
     // Update Data on the DOM
-    roundNumberPara.textContent = "Round #: " + (roundNumber) + " / 5";
+    roundNumberPara.textContent = `Round #: ${roundNumber + 1} / 5`;
     playerScorePara.textContent = "Player Score: " + playerScore;
     computerScorePara.textContent = "Computer Score: " + computerScore;
 
@@ -122,16 +122,21 @@ function playRound() {
 
     // Check for winner if round 5
     if(roundNumber == 5) {
-        if(playerScore > computerScore) {
-            gameOverMessagePara.textContent = `Player Wins with a Score of ${playerScore}!`;
-        }
-        else if(playerScore < computerScore) {
-            gameOverMessagePara.textContent = `Computer Wins with a Score of ${computerScore}!`;
-        }
-        else {
-            gameOverMessagePara.textContent = "It's a Draw!";
-        }
+        gameOver(roundNumber);
     }
+}
+
+function gameOver(roundNumber) {
+    if(playerScore > computerScore) {
+        gameOverMessagePara.textContent = `Player Wins with a Score of ${playerScore}!`;
+    }
+    else if(playerScore < computerScore) {
+        gameOverMessagePara.textContent = `Computer Wins with a Score of ${computerScore}!`;
+    }
+    else {
+        gameOverMessagePara.textContent = "It's a Draw!";
+    }
+    
 }
 
 function playGame() {
@@ -190,7 +195,7 @@ function main() {
 
     playerScore = 0;
     computerScore = 0;
-    roundNumber = 1;
+    roundNumber = 0;
 }
 
 main();
