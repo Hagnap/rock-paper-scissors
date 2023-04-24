@@ -50,7 +50,44 @@ function getPlayerChoice() {
     
 }
 
+function gameOver(computerScore, playerScore, gameOverMessagePara) {
+    if(playerScore > computerScore) {
+        gameOverMessagePara.textContent = `Player Wins with a Score of ${playerScore}!`;
+    }
+    else if(playerScore < computerScore) {
+        gameOverMessagePara.textContent = `Computer Wins with a Score of ${computerScore}!`;
+    }
+    else {
+        gameOverMessagePara.textContent = "It's a Draw!";
+    }
+    
+}
+
+function resetGame() {
+    playerScore = 0;
+    computerScore = 0;
+    roundNumber = 0;
+
+    
+    let gameResultsDiv = document.querySelector('.game-results');
+    gameResultsDiv.innerHTML = '';
+
+    // Gets paragraphs in game-data div & game-over div
+    let roundNumberPara = document.querySelector('#round-number');
+    roundNumberPara.textContent = '';
+    let playerScorePara = document.querySelector('#player-score');
+    playerScorePara.textContent = '';
+    let computerScorePara = document.querySelector('#computer-score');
+    computerScorePara.textContent = '';
+    let gameOverMessagePara = document.querySelector('#game-over-message');
+    gameOverMessagePara.textContent = '';
+}
+
 function playRound() {
+
+    // Check round number, if 5 -> Reset
+    if(roundNumber == 5) { resetGame(); }
+
 
     let playerSelection = getPlayerChoice();
     let computerSelection = getComputerChoice();
@@ -106,8 +143,6 @@ function playRound() {
         }
     }
 
-
-
     // Update Data on the DOM
     roundNumberPara.textContent = `Round #: ${roundNumber + 1} / 5`;
     playerScorePara.textContent = "Player Score: " + playerScore;
@@ -122,21 +157,8 @@ function playRound() {
 
     // Check for winner if round 5
     if(roundNumber == 5) {
-        gameOver(roundNumber);
+        gameOver(computerScore, playerScore, gameOverMessagePara);
     }
-}
-
-function gameOver(roundNumber) {
-    if(playerScore > computerScore) {
-        gameOverMessagePara.textContent = `Player Wins with a Score of ${playerScore}!`;
-    }
-    else if(playerScore < computerScore) {
-        gameOverMessagePara.textContent = `Computer Wins with a Score of ${computerScore}!`;
-    }
-    else {
-        gameOverMessagePara.textContent = "It's a Draw!";
-    }
-    
 }
 
 function playGame() {
@@ -193,9 +215,7 @@ function main() {
     
     //playGame();
 
-    playerScore = 0;
-    computerScore = 0;
-    roundNumber = 0;
+    resetGame();
 }
 
 main();
