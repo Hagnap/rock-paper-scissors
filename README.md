@@ -1,4 +1,4 @@
-# odin-rps
+# rock-paper-scissors
 
 ## Description
 This website is a simple Rock Paper Scissors game. To play this you must use the button at the top to play a round and then input your choice via the prompt. There are five rounds, for each round you input your choice of Rock, Paper, or Scissors in the prompt, after five rounds the game resets. You can also reset the game via refreshing the webpage.JavaScript is used to handle the logic and HTML & CSS are used to design and style the website. Flexbox was used to help layout the webpage's contents.
